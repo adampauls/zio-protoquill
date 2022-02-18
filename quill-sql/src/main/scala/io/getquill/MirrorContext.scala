@@ -27,7 +27,7 @@ extends MirrorContextBase[Dialect, Naming] with AstSplicing
 
 trait MirrorContextBase[Dialect <: Idiom, Naming <: NamingStrategy]
 extends Context[Dialect, Naming]
-with PrepareContext[Dialect, Naming]
+with ContextPrepare[Dialect, Naming]
 with MirrorDecoders
 with MirrorEncoders { self =>
   override type Result[T] = T

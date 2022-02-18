@@ -8,7 +8,7 @@ import java.sql._
 
 trait JdbcContextBase[Dialect <: SqlIdiom, Naming <: NamingStrategy]
   extends JdbcContextSimplified[Dialect, Naming]
-  with StagedPrepare[Dialect, Naming] {
+  with ContextPrepareFunction[Dialect, Naming] {
 
   // Need to re-define these here or they conflict with staged-prepare imported types
   override type PrepareQueryResult = Connection => Result[PreparedStatement]
@@ -22,7 +22,7 @@ trait JdbcContextBase[Dialect <: SqlIdiom, Naming <: NamingStrategy]
 
 trait JdbcContextSimplified[Dialect <: SqlIdiom, Naming <: NamingStrategy]
   extends JdbcRunContext[Dialect, Naming]
-  with PrepareContext[Dialect, Naming] {
+  with ContextPrepare[Dialect, Naming] {
 
   override type PrepareQueryResult = Connection => Result[PreparedStatement]
   override type PrepareActionResult = Connection => Result[PreparedStatement]

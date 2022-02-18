@@ -6,7 +6,7 @@ import zio.ZIO
 import zio.stream.ZStream
 
 trait ZioContext[Idiom <: io.getquill.idiom.Idiom, Naming <: NamingStrategy] extends Context[Idiom, Naming]
-  with StreamingContext[Idiom, Naming] {
+  with ContextStreaming[Idiom, Naming] {
 
   type Error
   type Environment
